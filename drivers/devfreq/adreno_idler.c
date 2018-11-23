@@ -62,9 +62,6 @@ module_param_named(adreno_idler_active, adreno_idler_active, bool, 0664);
 
 static unsigned int idlecount = 0;
 
-
-
-
 int adreno_idler(struct devfreq_dev_status stats, struct devfreq *devfreq,
 		 unsigned long *freq)
 {
@@ -86,7 +83,10 @@ int adreno_idler(struct devfreq_dev_status stats, struct devfreq *devfreq,
 			idlecount--;
 			return 1;
 		}
-
+	} else if (state_suspended) {
+		/* GPU shouldn't be used for much while display is off, so ramp down the frequency */
+		*freq = devfreq->profile->freq_table[devfreq->profile->max_state - 1];
+		return 1;
 	} else {
 		idlecount = 0;
 		/* Do not return 1 here and allow rest of the algorithm to
