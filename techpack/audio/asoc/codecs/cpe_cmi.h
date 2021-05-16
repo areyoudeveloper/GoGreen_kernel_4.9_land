@@ -168,6 +168,7 @@ enum {
 		((hdr->hdr_info >> SVC_ID_SHIFT) & \
 			(SVC_ID_MASK >> SVC_ID_SHIFT))
 
+
 #define CMI_HDR_SET_SESSION(hdr, s_id) \
 		CMI_HDR_SET(hdr->hdr_info, SESSION_ID_MASK,\
 			    SESSION_ID_SHIFT, s_id)
