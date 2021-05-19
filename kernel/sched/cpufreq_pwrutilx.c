@@ -19,7 +19,7 @@
 #include <linux/kthread.h>
 #include <linux/slab.h>
 #include <trace/events/power.h>
-#include <linux/display_state.h>
+#include <linux/state_notifier.h>
 #include <linux/sched/sysctl.h>
 #include "sched.h"
 #include "tune.h"
@@ -140,7 +140,7 @@ static void pwrgov_update_commit(struct pwrgov_policy *sg_policy, u64 time,
  * @sg_policy: pwrutilx policy object to compute the new frequency for.
  * @util: Current CPU utilization.
  * @max: CPU capacity.
- * @display_on: API to check if display is currently on.
+ * @state_notifier: API to check if display is currently on.
  *
  * If the utilization is frequency-invariant, choose the new frequency to be
  * proportional to it, that is
@@ -188,15 +188,15 @@ static unsigned int get_next_freq(struct pwrgov_policy *sg_policy,
 	unsigned int freq = arch_scale_freq_invariant() ?
 				policy->cpuinfo.max_freq : policy->cur;
 
-	const bool display_on = is_display_on();
+	
 	
 	if(policy->cpu < 4) {
-		if(display_on)
+		if(state_suspended)
 			freq = (freq + (freq >> 2)) * util / max;
 		else
 			freq = freq * util / max;
 	} else {
-		if(display_on)
+		if(state_suspended)
 			freq = freq * util / max;
 		else
 			return policy->min;
