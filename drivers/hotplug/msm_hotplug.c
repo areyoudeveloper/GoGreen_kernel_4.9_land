@@ -38,7 +38,7 @@
 #define DEFAULT_FAST_LANE_LOAD	99
 
 static unsigned int debug = 0;
-module_param_named(debug_mask, debug, uint, 0644);
+module_param_named(debug_mask, debug, uint, 0664);
 
 #define dprintk(msg...)		\
 do { 				\
@@ -868,21 +868,21 @@ static ssize_t show_current_load(struct device *dev,
 	return sprintf(buf, "%u\n", stats.cur_avg_load);
 }
 
-static DEVICE_ATTR(down_lock_duration, 644, show_down_lock_duration,
+static DEVICE_ATTR(down_lock_duration, 664, show_down_lock_duration,
 		   store_down_lock_duration);
-static DEVICE_ATTR(boost_lock_duration, 644, show_boost_lock_duration,
+static DEVICE_ATTR(boost_lock_duration, 664, show_boost_lock_duration,
 		   store_boost_lock_duration);
-static DEVICE_ATTR(update_rates, 644, show_update_rates, store_update_rates);
-static DEVICE_ATTR(history_size, 644, show_history_size, store_history_size);
-static DEVICE_ATTR(min_cpus_online, 644, show_min_cpus_online,
+static DEVICE_ATTR(update_rates, 664, show_update_rates, store_update_rates);
+static DEVICE_ATTR(history_size, 664, show_history_size, store_history_size);
+static DEVICE_ATTR(min_cpus_online, 664, show_min_cpus_online,
 		   store_min_cpus_online);
-static DEVICE_ATTR(max_cpus_online, 644, show_max_cpus_online,
+static DEVICE_ATTR(max_cpus_online, 664, show_max_cpus_online,
 		   store_max_cpus_online);
-static DEVICE_ATTR(cpus_boosted, 644, show_cpus_boosted, store_cpus_boosted);
-static DEVICE_ATTR(offline_load, 644, show_offline_load, store_offline_load);
-static DEVICE_ATTR(fast_lane_load, 644, show_fast_lane_load,
+static DEVICE_ATTR(cpus_boosted, 664, show_cpus_boosted, store_cpus_boosted);
+static DEVICE_ATTR(offline_load, 664, show_offline_load, store_offline_load);
+static DEVICE_ATTR(fast_lane_load, 664, show_fast_lane_load,
 		   store_fast_lane_load);
-static DEVICE_ATTR(io_is_busy, 644, show_io_is_busy, store_io_is_busy);
+static DEVICE_ATTR(io_is_busy, 664, show_io_is_busy, store_io_is_busy);
 static DEVICE_ATTR(current_load, 444, show_current_load, NULL);
 
 static struct attribute *msm_hotplug_attrs[] = {
