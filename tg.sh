@@ -4,12 +4,12 @@ export PATH=$PATH:~/bin/:/usr/bin
 export DEBIAN_FRONTEND=noninteractive
 export TZ=Asia/Jakarta
 export TIME=$(date +"%S-%F")
-sudo ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
-sudo dpkg-reconfigure --frontend noninteractive tzdata
+ ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+ dpkg-reconfigure --frontend noninteractive tzdata
 
-sudo apt-get install -y tzdata
-sudo apt-get update -qq && \
-    sudo apt-get install --no-install-recommends -y \
+ apt-get install -y tzdata
+ apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
 	autoconf \
 	autogen \
 	automake \
