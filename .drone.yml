@@ -7,5 +7,6 @@ steps:
     image: ubuntu:latest
     commands: 
        - apt update && apt install git wget -y
-       - chmod +x tg.sh && ./tg.sh
+       - chmod +x tg.sh 
+       - ./tg.sh
 	
