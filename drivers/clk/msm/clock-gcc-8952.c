@@ -759,15 +759,15 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_8937[] = {
 	F_SLEW( 216000000, FIXED_CLK_SRC, gpll6_aux,	5,	0,	0),
 	F_SLEW( 228570000, FIXED_CLK_SRC, gpll0,	3.5,	0,	0),
 	F_SLEW( 240000000, FIXED_CLK_SRC, gpll6_aux,	4.5,	0,	0),
-	F_SLEW( 259200000, 1296000000,	  gpll3,	2.5,	0,	0),
+	F_SLEW( 259200000, 129600000,	  gpll3,	2.5,	0,	0),
 	F_SLEW( 266670000, FIXED_CLK_SRC, gpll0,	3,	0,	0),
 	F_SLEW( 320000000, FIXED_CLK_SRC, gpll0,	2.5,	0,	0),
 	F_SLEW( 355200000, 710400000,	  gpll3,	1,	0,	0),
 	F_SLEW( 375000000, 750000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 400000000, FIXED_CLK_SRC, gpll0,	2,	0,	0),
 	F_SLEW( 450000000, 900000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 500000000, 1000000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 550000000, 1100000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 510000000, 1020000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 560000000, 1120000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
 	F_END
 };
@@ -782,7 +782,7 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_sdm439[] = {
 	F_SLEW( 216000000, FIXED_CLK_SRC, gpll6_aux,	5,	0,	0),
 	F_SLEW( 228570000, FIXED_CLK_SRC, gpll0,	3.5,	0,	0),
 	F_SLEW( 240000000, FIXED_CLK_SRC, gpll6_aux,	4.5,	0,	0),
-	F_SLEW( 259200000, 1296000000,	  gpll3,	2.5,	0,	0),
+	F_SLEW( 259200000, 129600000,	  gpll3,	2.5,	0,	0),
 	F_SLEW( 266670000, FIXED_CLK_SRC, gpll0,	3,	0,	0),
 	F_SLEW( 320000000, FIXED_CLK_SRC, gpll0,	2.5,	0,	0),
 	F_SLEW( 355200000, 710400000,	  gpll3,	1,	0,	0),
@@ -812,8 +812,8 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_8937_475MHz[] = {
 	F_SLEW( 375000000, 750000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 400000000, FIXED_CLK_SRC, gpll0,	2,	0,	0),
 	F_SLEW( 450000000, 900000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 500000000, 1000000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 550000000, 1100000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 510000000, 1020000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 560000000, 1120000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
 	F_END
 };
@@ -4342,12 +4342,12 @@ static void override_for_8937(int speed_bin)
 	if (speed_bin) {
 		OVERRIDE_FMAX6(gfx3d,
 		        LOWER, 266670000, LOW, 400000000, NOMINAL, 450000000,
-			NOM_PLUS, 500000000, HIGH, 550000000, SUPER_TUR, 650000000);
+			NOM_PLUS, 510000000, HIGH, 560000000, SUPER_TUR, 650000000);
 		OVERRIDE_FTABLE(gfx3d, ftbl_gcc_oxili_gfx3d_clk, 8937_475MHz);
 	} else {
 		OVERRIDE_FMAX5(gfx3d,
 			LOWER, 266670000, LOW, 400000000, NOMINAL, 450000000,
-			NOM_PLUS, 500000000, HIGH, 550000000);
+			NOM_PLUS, 510000000, HIGH, 560000000);
 		OVERRIDE_FTABLE(gfx3d, ftbl_gcc_oxili_gfx3d_clk, 8937);
 	}
 
